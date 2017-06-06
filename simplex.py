@@ -1,5 +1,6 @@
 import numpy as np
 
+# Fonction de vérification de la fin de l'évaluation
 def verif_fin(tab):
     for i in range(2,7):
         if tab[i] < 0:
