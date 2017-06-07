@@ -13,18 +13,29 @@ valX = 0
 valY = 0
 iterations = 0
 
+Z = [int(x) for x in input("Coefficients de l'équation à maximiser (coeff1/coeff2): ").split("/")]
+
+contrainte1 = [int(x) for x in input("Première contrainte (coeff1/coeff2/valeur): ").split("/")]
+
+contrainte2 = [int(x) for x in input("Deuxième contrainte (coeff1/coeff2/valeur): ").split("/")]
+
+contrainte3 = [int(x) for x in input("Troisième contrainte (coeff1/coeff2/valeur): ").split("/")]
+
+# Déclaration du tableau contenant les coefficients de l'équation de base et des contraintes
 tableau = np.array([
-[0,0,2,1,0,0,0],
-[0,18,2,1,1,0,0],
-[0,20,1,3,0,1,0],
-[0,24,3,1,0,0,1],
-[0,0,-2,-1,0,0,0]
+[0,0,Z[0],Z[1],0,0,0],
+[0,contrainte1[2],contrainte1[0],contrainte1[1],1,0,0],
+[0,contrainte2[2],contrainte2[0],contrainte2[1],0,1,0],
+[0,contrainte3[2],contrainte3[0],contrainte3[1],0,0,1],
+[0,0,(-1*Z[0]),(-1*Z[1]),0,0,0]
 ], dtype = float)
 
 tempTab = np.array([],dtype = float)
 
 print(tableau)
 
+
+# Boucle qui s'exécute tant qu'il y a encore des itérations possibles
 while verif_fin(tableau[4]):
     iterations = iterations + 1
     valeurPivot = 0
